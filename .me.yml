@@ -1,4 +1,5 @@
-sudo: required
+language: generic 
+sudo: requiered
 services:
   - docker
 
@@ -13,23 +14,12 @@ after_success:
   - docker build -t ismailhi/multi-nginx ./nginx
   - docker build -t ismailhi/multi-server ./server
   - docker build -t ismailhi/multi-worker ./worker
-  # Log in to the docker CLI
+  # log-in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Take those images and push them to docker hub
+  # Take docker images and push them to docker hub
   - docker push ismailhi/multi-client
   - docker push ismailhi/multi-nginx
   - docker push ismailhi/multi-server
   - docker push ismailhi/multi-worker
+  
 
-deploy:
-  provider: elasticbeanstalk
-  region: us-west-1
-  app: multi-docker
-  env: MultiDocker-env
-  bucket_name: elasticbeanstalk-us-west-1-306476627547
-  bucket_path: docker-multi
-  on:
-    branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: $AWS_SECRET_KEY
