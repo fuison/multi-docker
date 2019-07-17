@@ -1,0 +1,2 @@
+diff -w /Users/ismail/Downloads/docker/app/complex/client/Dockerfile.dev /Users/ismail/Downloads/DockerCasts-master/complex-elastic-beanstalk/client/Dockerfile.dev
+diff -w /Users/ismail/Downloads/docker/app/complex/client/package.json /Users/ismail/Downloads/DockerCasts-master/complex-elastic-beanstalk/client/package.json
