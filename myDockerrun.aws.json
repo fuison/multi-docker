@@ -1,0 +1,36 @@
+{
+    "AWSEBSDockerrunVersion":2,
+    "containerDefinitions" :[
+        {
+            "name" : "client",
+            "image" : "ismailhi/multi-client",
+            "hostname" : "client",
+            "essential" : false
+        },
+        {
+            "name" : "server",
+            "image" : "ismailhi/multi-server",
+            "hostname" : "api",
+            "essential" : false
+        },
+        {
+            "name" : "worker",
+            "image" : "ismailhi/multi-worker",
+            "hostname" : "worker",
+            "essential" : false
+        },
+        {
+            "name" : "nginx",
+            "image" : "ismailhi/multi-nginx",
+            "hostname" : "nginx",
+            "essential" : true,
+            "portMappings" : [
+                {
+                    "hostPort": 80,
+                    "containerPort" :80
+                }                 
+            ],
+            "links" : ["client", "server"]
+        }
+    ]
+}
